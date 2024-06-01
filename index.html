@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <header>
-        <div class="profile">
-            <img src="your_photo.jpg" alt="My Photo" class="profile-photo">
-            <h1>Your Name</h1>
-            <p>Email: <a href="mailto:your_email@example.com">your_email@example.com</a></p>
-            <p>Phone: <a href="tel:+1234567890">+1234567890</a></p>
+
+  <header class="header">
+    <span class="logo">Сайт Сергея Петрова</span>
+  </header>
+
+  <div class="hero">
+    <div class="container hero__container">
+      <div class="hero__about">
+        <h1 class="hero__title">Веб-разработчик</h1>
+        <h2 class="hero__subtitle">Сергей петров</h2>
+        <p class="hero__description">
+          Привет, я занимаюсь версткой адаптивных сайтов по макету. Пишите для сотрудничества.
+        </p>
+
+
+        <div class="hero__links">
+          <a class="hero__link" href="#" target="_blank"><i class='bx bxl-vk'></i></a>
+          <a class="hero__link" href="#"><i class='bx bxl-facebook'></i></a>
+          <a class="hero__link" href="#"><i class='bx bxl-instagram'></i></a>
+          <a class="hero__link" href="#"><i class='bx bxl-pinterest'></i></a>
         </div>
-    </header>
-    <main>
-        <section class="portfolio">
-            <h2>Portfolio</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Photo</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="project_details1.html"><img src="project1.jpg" alt="Project 1" class="project-photo"></a></td>
-                        <td>Project 1</td>
-                        <td>Short description of project 1.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="project_details2.html"><img src="project2.jpg" alt="Project 2" class="project-photo"></a></td>
-                        <td>Project 2</td>
-                        <td>Short description of project 2.</td>
-                    </tr>
-                    <!-- Add more projects here -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+
+
+      </div>
+
+      <div class="hero__box">
+        <img class="hero__box-img" src="11.png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
 </body>
+
 </html>
