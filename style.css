@@ -253,8 +253,8 @@ h3 {
 }
 
 .img-small-rounded {
-  max-width: 1000px;
-  max-height: 800px;
+  max-width: 700px;
+  max-height: 450px;
   height: auto;
   border-radius: 8px;
 }
@@ -270,6 +270,12 @@ h3 {
   pointer-events: none;
 }
 
+.goit {
+    padding-top:100px;
+    height: 700px;
+    weight: 500px;
+}
+
 .certificate:hover {
   background-color: #f1f5f9;
 }
@@ -277,3 +283,8 @@ h3 {
 video {
         margin-top: 25px;
     }
+
+.project_1_0 {
+    margin-top: 35px;
+    height: 285px;
+}
