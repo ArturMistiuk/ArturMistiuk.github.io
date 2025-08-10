@@ -63,7 +63,7 @@ h3 {
 }
 
 .hero__title {
-  font-size: 48px;
+  font-size: 52px;
   line-height: 1.1;
   margin-bottom: 20px;
 }
@@ -74,7 +74,7 @@ h3 {
 }
 
 .hero__subtitle {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 400;
 }
 
@@ -84,6 +84,7 @@ h3 {
 
 .hero__contact {
   margin-bottom: 20px;
+  font-size: 28px;
 }
 
 .hero__contact-item {
@@ -109,7 +110,7 @@ h3 {
 
 .hero__link {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 40px;
   color: #000;
 }
 
