@@ -1,0 +1,220 @@
+---
+import { skillCategories } from '../data/skills';
+---
+
+<section id="about">
+  <div class="section-container">
+    <div class="about-grid">
+      <div class="about-text fade-in-up">
+        <div class="section-divider"></div>
+        <h2 class="section-title">About Me</h2>
+        <div class="bio">
+          <p>
+            I'm a <strong>Data Analyst</strong> based in Stockholm, Sweden, currently working as a consultant
+            at <strong>Visa</strong> — one of Europe's leading fintech companies. My day-to-day work involves
+            supporting NLP and ML workflows through data labeling, dataset validation, and data quality assurance
+            on large-scale financial transaction data.
+          </p>
+          <p>
+            My background spans the full data lifecycle — from writing optimised SQL queries and
+            exploratory data analysis to training machine learning models and building dashboards.
+            I have a strong foundation in statistics backed by
+            240 hours of dedicated maths training (linear algebra, calculus, probability, and statistics).
+          </p>
+          <p>
+            I'm fluent in <strong>Ukrainian, English, and Russian</strong>, and have intermediate
+            Swedish and Polish — which helps me collaborate across international teams.
+          </p>
+        </div>
+
+        <div class="languages">
+          <h3 class="lang-heading">Languages</h3>
+          <div class="lang-list">
+            <div class="lang-item">
+              <span class="lang-name">Ukrainian</span>
+              <span class="lang-level native">Native</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">English</span>
+              <span class="lang-level fluent">Fluent</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Russian</span>
+              <span class="lang-level fluent">Fluent</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Swedish</span>
+              <span class="lang-level inter">Intermediate</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Polish</span>
+              <span class="lang-level inter">Intermediate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-section fade-in-up">
+        <h3 class="skills-heading">Tech Stack</h3>
+        <div class="skills-grid">
+          {skillCategories.map((category) => (
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <span class="skill-icon" aria-hidden="true">{category.icon}</span>
+                <span class="skill-label">{category.label}</span>
+              </div>
+              <div class="skill-list">
+                {category.skills.map((skill) => (
+                  <span class="badge">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .bio p {
+    font-size: 0.975rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+
+  .bio strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  /* Languages */
+  .lang-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    margin-bottom: 0.75rem;
+  }
+
+  .lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .lang-name {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+  }
+
+  .lang-level {
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .lang-level.native {
+    background: rgba(63, 185, 80, 0.15);
+    color: var(--color-accent-green);
+    border: 1px solid rgba(63, 185, 80, 0.3);
+  }
+
+  .lang-level.fluent {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+  }
+
+  .lang-level.inter {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Skills */
+  .skills-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    margin-bottom: 1.25rem;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-category {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-icon {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    font-weight: 700;
+    min-width: 24px;
+  }
+
+  .skill-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-left: 1.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

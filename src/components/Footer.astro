@@ -1,0 +1,80 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">
+      <span class="footer-logo">
+        <span class="bracket">&lt;</span>AM<span class="bracket">/&gt;</span>
+      </span>
+      © {year} Artur Mistiuk. Built with
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>.
+    </p>
+    <p class="footer-note">
+      Designed &amp; developed from scratch.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+    margin-right: 0.25rem;
+  }
+
+  .bracket {
+    color: var(--color-accent);
+  }
+
+  .footer-copy a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-copy a:hover {
+    color: #79c0ff;
+  }
+
+  .footer-note {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>

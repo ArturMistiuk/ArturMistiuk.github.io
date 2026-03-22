@@ -1,0 +1,218 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const hasVideo = Boolean(project.video);
+const mediaUrl = hasVideo ? project.video : project.image;
+---
+
+<article class="card project-card fade-in-up" aria-label={`Project: ${project.title}`}>
+  {mediaUrl && (
+    <div class="project-media">
+      {hasVideo ? (
+        <>
+          <video
+            src={project.video}
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-label={project.imageAlt}
+            class="project-video"
+          />
+          <button class="volume-btn" aria-label="Enable sound" data-volume-btn>
+            <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l2 2L21 18.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/>
+            </svg>
+            <svg class="icon-sound" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </button>
+        </>
+      ) : (
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          class="project-img"
+          loading="lazy"
+          width="600"
+          height="340"
+        />
+      )}
+      {project.featured && (
+        <span class="featured-badge">Featured</span>
+      )}
+    </div>
+  )}
+
+  <div class="project-body">
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-description">{project.description}</p>
+
+    <div class="project-tags" role="list" aria-label="Technologies used">
+      {project.tags.map((tag) => (
+        <span class="badge" role="listitem">{tag}</span>
+      ))}
+    </div>
+
+    <div class="project-links">
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline project-link"
+        aria-label={`View ${project.title} source code on GitHub`}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+        </svg>
+        Code
+      </a>
+      {project.liveDemoUrl && (
+        <a
+          href={project.liveDemoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary project-link"
+          aria-label={`Open live demo of ${project.title}`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Live Demo
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-volume-btn]').forEach((btn) => {
+    const video = btn.closest('.project-media')?.querySelector('video');
+    if (!video) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      btn.classList.toggle('unmuted', !video.muted);
+      btn.setAttribute('aria-label', video.muted ? 'Enable sound' : 'Mute');
+    });
+  });
+</script>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .project-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+
+  .project-img,
+  .project-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .project-card:hover .project-img,
+  .project-card:hover .project-video {
+    transform: scale(1.04);
+  }
+
+  .volume-btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(13, 17, 23, 0.7);
+    border: 1px solid rgba(48, 54, 61, 0.8);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color var(--transition-fast), background var(--transition-fast);
+    z-index: 2;
+  }
+
+  .volume-btn:hover {
+    color: var(--color-text-primary);
+    background: rgba(33, 38, 45, 0.9);
+  }
+
+  .volume-btn .icon-sound { display: none; }
+  .volume-btn.unmuted .icon-muted { display: none; }
+  .volume-btn.unmuted .icon-sound { display: block; }
+
+  .featured-badge {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    background: var(--color-accent-green);
+    color: #0d1117;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .project-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .project-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+
+  .project-description {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  .project-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
+    text-decoration: none;
+  }
+</style>

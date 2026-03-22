@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Bash(git -C /c/GitHub/ArturMistiuk.github.io show main:style.css)",
+      "Bash(git:*)",
+      "Bash(npm install:*)",
+      "Bash(nvm use:*)",
+      "Read(//c/Users/misti/.nvm/versions/**)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/misti/AppData/Local/Programs/**)",
+      "Bash(cmd.exe /c \"node --version && npm --version\" 2>&1)",
+      "Bash(cmd.exe /c \"node --version\")",
+      "Bash(cmd.exe /c \"where node\")",
+      "Bash(powershell.exe -Command \"node --version; npm --version\" 2>&1)",
+      "Bash(ls:*)"
+    ]
+  }
+}

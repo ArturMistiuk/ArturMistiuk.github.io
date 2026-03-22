@@ -1,0 +1,362 @@
+---
+import { experience } from '../data/experience';
+
+const workItems = experience.filter((item) => item.type === 'work');
+const eduItems = experience.filter((item) => item.type !== 'work');
+---
+
+<section id="experience">
+  <div class="section-container">
+    <div class="section-divider"></div>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-subtitle">Where I've worked, studied, and earned credentials.</p>
+
+    <!-- Tab switcher -->
+    <div class="tab-bar" role="tablist">
+      <button
+        class="tab-btn active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-work"
+        id="tab-work"
+        data-tab="work"
+      >
+        Work
+      </button>
+      <button
+        class="tab-btn"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-edu"
+        id="tab-edu"
+        data-tab="edu"
+      >
+        Education
+      </button>
+    </div>
+
+    <!-- Work panel -->
+    <div class="tab-panel" id="panel-work" role="tabpanel" aria-labelledby="tab-work" data-active="true">
+      <div class="timeline">
+        {workItems.map((item) => (
+          <div class="timeline-item fade-in-up">
+            <div class="timeline-marker" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm-8-2h4v2h-4V5z"/>
+              </svg>
+            </div>
+            <div class="timeline-content card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">{item.title}</h3>
+                  <p class="timeline-org">
+                    {item.organization}
+                    <span class="timeline-location"> · {item.location}</span>
+                  </p>
+                </div>
+                <span class="timeline-date">{item.startDate} — {item.endDate}</span>
+              </div>
+              <ul class="timeline-bullets">
+                {item.description.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+              {item.tags && item.tags.length > 0 && (
+                <div class="timeline-tags">
+                  {item.tags.map((tag) => <span class="badge">{tag}</span>)}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Education panel -->
+    <div class="tab-panel" id="panel-edu" role="tabpanel" aria-labelledby="tab-edu" data-active="false">
+      <div class="timeline">
+        {eduItems.map((item) => (
+          <div class="timeline-item fade-in-up">
+            <div class="timeline-marker" aria-hidden="true">
+              {item.type === 'certification' ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 1L9 9H1l6.5 4.73L5 22l7-5 7 5-2.5-8.27L23 9h-8L12 1z"/>
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14-7-3.82v-4.35l7 3.82 7-3.82v4.35L12 17z"/>
+                </svg>
+              )}
+            </div>
+            <div class="timeline-content card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">{item.title}</h3>
+                  <p class="timeline-org">
+                    {item.organization}
+                    <span class="timeline-location"> · {item.location}</span>
+                  </p>
+                </div>
+                <span class="timeline-date">{item.startDate} — {item.endDate}</span>
+              </div>
+              <ul class="timeline-bullets">
+                {item.description.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+              {item.tags && item.tags.length > 0 && (
+                <div class="timeline-tags">
+                  {item.tags.map((tag) => <span class="badge">{tag}</span>)}
+                </div>
+              )}
+              {(item.certificatePdf || item.certificateUrl) && (
+                <div class="cert-links">
+                  {item.certificatePdf && (
+                    <a
+                      href={item.certificatePdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cert-link"
+                      aria-label={`Download certificate: ${item.title}`}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
+                      </svg>
+                      Certificate PDF
+                    </a>
+                  )}
+                  {item.certificateUrl && (
+                    <a
+                      href={item.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cert-link"
+                      aria-label={`View digital credential: ${item.title}`}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                      </svg>
+                      View Credential
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.tab-panel');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      tabBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      panels.forEach((panel) => {
+        const show = panel.id === `panel-${target}`;
+        panel.dataset.active = show ? 'true' : 'false';
+      });
+    });
+  });
+</script>
+
+<style>
+  /* ── Tabs ──────────────────────────────────────────── */
+  .tab-bar {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.6rem 1.25rem;
+    margin-bottom: -1px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover {
+    color: var(--color-text-primary);
+  }
+
+  .tab-btn.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* ── Tab panels ────────────────────────────────────── */
+  .tab-panel[data-active="false"] {
+    display: none;
+  }
+
+  /* ── Timeline ─────────────────────────────────────── */
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .timeline-marker {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-accent);
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-org {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .timeline-location {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-bullets li {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    top: 0.1em;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* ── Cert links ──────────────────────────────────── */
+  .cert-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.3rem 0.65rem;
+    text-decoration: none;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .cert-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* ── Responsive ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .timeline-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .timeline-date {
+      white-space: normal;
+    }
+  }
+</style>
