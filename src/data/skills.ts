@@ -16,7 +16,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'data-tools',
     label: 'Data & Analysis',
     icon: '📊',
-    skills: ['Pandas', 'NumPy', 'Data Analysis (EDA)', 'A/B Testing', 'Statistics', 'Excel'],
+    skills: ['Pandas', 'NumPy', 'Data Analysis (EDA)', 'Matplotlib/Seaborn', 'Statistics', 'Excel'],
   },
   {
     id: 'ml',
@@ -28,7 +28,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'bi-tools',
     label: 'BI & Visualization',
     icon: '📈',
-    skills: ['PowerBI', 'Looker Studio'],
+    skills: ['PowerBI', 'Looker Studio', 'Plotly/Dash'],
   },
   {
     id: 'databases',
@@ -40,6 +40,6 @@ export const skillCategories: SkillCategory[] = [
     id: 'engineering',
     label: 'Engineering',
     icon: '⚙️',
-    skills: ['Docker', 'Git', 'dbt', 'Claude'],
+    skills: ['Docker', 'Git', 'dbt'],
   },
 ];
