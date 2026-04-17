@@ -19,10 +19,16 @@ export const skillCategories: SkillCategory[] = [
     skills: ['Pandas', 'NumPy', 'Data Analysis (EDA)', 'Matplotlib/Seaborn', 'Statistics', 'Excel'],
   },
   {
+    id: 'ai llm workflows',
+    label: 'AI & LLM Workflows',
+    icon: '🤖',
+    skills: ['Prompt Engineering', 'LLM Evaluation', 'Blind Evaluation', 'Claude', 'ChatGPT', 'MCP'],
+  },
+  {
     id: 'ml',
     label: 'Machine Learning',
     icon: '🤖',
-    skills: ['Machine Learning', 'TensorFlow', 'scikit-learn'],
+    skills: ['scikit-learn', 'Classification', 'Clustering', 'Model Evaluation (F1, Confusion Matrix)'],
   },
   {
     id: 'bi-tools',
@@ -34,12 +40,12 @@ export const skillCategories: SkillCategory[] = [
     id: 'databases',
     label: 'Databases & Cloud',
     icon: '🗄️',
-    skills: ['BigQuery', 'SQL databases', "MongoDB"],
+    skills: ['BigQuery', 'PostgreSQL ', "MongoDB"],
   },
   {
     id: 'engineering',
     label: 'Engineering',
     icon: '⚙️',
-    skills: ['Docker', 'Git', 'dbt'],
+    skills: ['Git', 'Docker', 'Label Studio', 'Jira'],
   },
 ];
