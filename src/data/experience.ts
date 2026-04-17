@@ -23,13 +23,13 @@ export const experience: ExperienceItem[] = [
     startDate: 'Oct 2024',
     endDate: 'Present',
     description: [
-      'Labeling and validating financial transaction data across multiple markets to support merchant prediction and transaction categorization ML models.',
-      'Performing data quality assurance — identifying inconsistencies through dashboards and resolving data issues to maintain training dataset reliability.',
-      'Researching and enriching merchant information to ensure accuracy of predicted attributes.',
-      'Using AI-assisted tools and structured workflows to improve annotation speed and consistency.',
-      'Coordinated and mentored a team of 7 data labelers, running standups and workshops.',
+      'Working on financial transaction data across 20+ international markets to support merchant prediction and transaction categorization ML models.',
+      'Writing and iterating on prompts for AI labeling agents; running blind evaluations of model vs. human labels and feeding error patterns back into prompt revisions.',
+      'Performing data quality assurance through dashboards and resolving inconsistencies to keep training datasets reliable.',
+      'Using Python and SQL for data tasks and analysis, collaborating with ML engineers during dataset preparation and evaluation.',
+      'Mentored a team of 7 data labelers and ran a 6-month onboarding program for an external consultant team — standups, onboarding materials, and workshops.',
     ],
-    tags: ['Python', 'SQL', 'Looker Studio', 'ML Pipelines', 'Data Quality'],
+    tags: ['Python', 'SQL', 'Looker Studio', 'BigQuery', 'Data Validation'],
   },
 
   // ── Education ─────────────────────────────────────────────────
